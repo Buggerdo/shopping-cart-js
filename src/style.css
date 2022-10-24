@@ -129,3 +129,13 @@ a{
   cursor: pointer;
   margin-top: 10px;
 }
+
+.bi-bag-x{
+  color: red;
+  font-weight: bold;
+}
+
+.shopping-cart{
+  display: grid;
+  grid-template-columns: repeat(1, 320px);
+}
