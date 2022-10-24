@@ -105,3 +105,12 @@ body {
 .bi-plus-lg{
   color: green;
 }
+
+i{
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
