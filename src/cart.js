@@ -1,5 +1,5 @@
 let basket = JSON.parse(localStorage.getItem("data")) || [];
-let lable = document.getElementById("lable");
+let label = document.getElementById("label");
 let shoppingCart = document.getElementById("shopping-cart");
 
 let calculation = () => {
@@ -11,7 +11,21 @@ calculation();
 
 let generateCartItems = () => {
   if(basket.length !== 0){
-    console.log("basket is not empty")
+    return shoppingCart.innerHTML = basket.map((c) => {
+      return `
+      <div class="cart-item">hello</div>
+      `
+    })
   }
-  else{}
-}
+  else{
+    shoppingCart.innerHTML = ``;
+    label.innerHTML = `
+    <h2>The cart is empty</h2>
+    <a href="index.html">
+    <button class="HomeBtn">Back to store</button>
+    </a>
+    `;
+  }
+};
+
+generateCartItems();
