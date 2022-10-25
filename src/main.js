@@ -2,15 +2,13 @@ let shop = document.getElementById("shop");
 
 let basket = JSON.parse(localStorage.getItem("data")) || [];
 
-
-
 let generateShop = () => {
   return (shop.innerHTML = shopItemsData.map((x)=>{
     let{id, name, price, desc, img} =x
-    let search = basket.find((s) => s.id === id) || [];
+    let search = basket.find(s => s.id === id) || [];
     return `
     <div id=product-id-${id} class="item">
-      <img width="220" src=${img} alt="">
+      <img width="220" src=${img} alt="" onclick="increment(${id})">
       <div class="details">
         <h3>${name}</h3>
         <p>${desc}</p>
@@ -31,9 +29,9 @@ let generateShop = () => {
 
 generateShop();
 
-let increment = (id) => {
+function increment(id){
   let selectedItem = id;
-  let search = basket.find( (s) => s.id === selectedItem.id);
+  let search = basket.find(s => s.id === selectedItem.id);
 
   if(search === undefined){
      basket.push({
@@ -45,11 +43,11 @@ let increment = (id) => {
     search.item += 1;
   }
   update(selectedItem.id);
-};
+}
 
-let decrement = (id) => {
+function decrement(id){
   let selectedItem = id;
-  let search = basket.find( (s) => s.id === selectedItem.id);
+  let search = basket.find(s => s.id === selectedItem.id);
 
   if(search === undefined) return;
   else if(search.item === 0) return;
@@ -57,19 +55,19 @@ let decrement = (id) => {
     search.item -= 1;
   }
   update(selectedItem.id);
-};
+}
 
-let update = (id) => {
-  let search = basket.find((s)=> s.id === id);
+function update(id){
+  let search = basket.find(s => s.id === id);
   document.getElementById(id).innerHTML = search.item;
   calculation();
-  basket = basket.filter((f) => f.item !== 0);
+  basket = basket.filter(f => f.item !== 0);
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
-let calculation = () => {
+function calculation(){
   let cartIcon = document.getElementById("cartAmount");
-  cartIcon.innerHTML = basket.map((m) => m.item).reduce((x,y) => x+y,0)
+  cartIcon.innerHTML = basket.map(m => m.item).reduce((x,y) => x+y,0)
 }
 
 calculation();

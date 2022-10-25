@@ -20,4 +20,11 @@ let shopItemsData = [
     desc: "A pear thing",
     img: "images/pear.jpg",
   },
+  {
+    id: "pearRotten",
+    name: "Pear",
+    price: 0.25,
+    desc: "A rotten pear",
+    img: "images/pear.jpg",
+  },
 ];
